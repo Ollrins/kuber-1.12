@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-consumer
+  namespace: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-consumer
+  template:
+    metadata:
+      labels:
+        app: web-consumer
+    spec:
+      containers:
+      - name: web-consumer
+        image: postgres:13
+        env:
+        - name: PGPASSWORD
+          value: "auth_pass"
+        command:
+        - /bin/sh
+        - -c
+        - |
+          while true; do
+            if pg_isready -h auth-db -U auth_user -d auth_db; then
+              echo "$(date '+%Y-%m-%d %H:%M:%S') ✓ Connected to auth-db"
+            else
+              echo "$(date '+%Y-%m-%d %H:%M:%S') ✗ Failed to connect"
+            fi
+            sleep 10
+          done
