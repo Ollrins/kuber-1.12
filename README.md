@@ -9,7 +9,7 @@
 - [auth-db-service-externalname.yaml](auth-db-service-externalname.yaml)
 - [web-consumer-fixed.yaml](web-consumer-fixed.yaml)
 
-### Описание проблемы
+#### Описание проблемы
 
 При деплое приложения `web-consumer` не может подключиться к `auth-db`.
 
@@ -20,7 +20,7 @@
 - Образ `radial/busyboxplus:curl` имеет неподдерживаемый тип манифеста (ImagePullBackOff)
 - Использование `curl` для проверки PostgreSQL, который работает по TCP протоколу
 
-### Решение
+#### Решение
 
 1. Созданы неймспейсы `web` и `data`
 2. Образ `web-consumer` заменен на `postgres:13` с использованием `pg_isready` для проверки подключения
