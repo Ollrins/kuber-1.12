@@ -52,5 +52,5 @@ kubectl exec -it -n web deployment/web-consumer -- pg_isready -h auth-db -U auth
 
 <p align="center"> <img src="S/S3.png" width="900"/> <br> <em>Рисунок 3 - Успешное подключение к auth-db (✓ Connected)</em> </p>
 
-Вывод
+#### Вывод
 Все проблемы устранены. Приложение web-consumer успешно подключается к auth-db.
